@@ -23,7 +23,7 @@ services:
     environment:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: admin123
-        POSTGRES_DB: nc_tutorials_db
+        POSTGRES_DB: disney_reviews_db
         POSTGRES_HOST_AUTH_METHOD: trust
     ports:
         - "5432:5432"
