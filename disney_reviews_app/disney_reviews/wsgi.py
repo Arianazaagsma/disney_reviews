@@ -1,5 +1,5 @@
 """
-WSGI config for nc_tutorials project.
+WSGI config for disney_reviews project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'nc_tutorials.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'disney_reviews.settings')
 
 application = get_wsgi_application()
