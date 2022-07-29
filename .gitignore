@@ -1,0 +1,5 @@
+venv
+.env
+disney_reviews/reviews/migrations
+disney_reviews/users/migrations
+disney_reviews/.vscode
