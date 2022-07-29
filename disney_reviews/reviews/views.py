@@ -42,6 +42,7 @@ def reviews_list(request):
         return JsonResponse(reviews_serializer.errors,
                             status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['DELETE'])
 def delete_review(request, pk):
     try: 
@@ -52,3 +53,14 @@ def delete_review(request, pk):
     review.delete()
     return JsonResponse({'message': 'Tutorial was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
 
+
+@api_view(['POST'])
+def add_show_movie(request):
+    shows_movies_data = JSONParser().parse(request)
+    shows_movies_serializer = ShowsMoviesSerializers(data=shows_movies_data)
+    if shows_movies_serializer.is_valid():
+        shows_movies_serializer.save()
+        return JsonResponse(shows_movies_serializer.data,
+                            status=status.HTTP_201_CREATED)
+    return JsonResponse(shows_movies_serializer.errors,
+                        status=status.HTTP_400_BAD_REQUEST)
