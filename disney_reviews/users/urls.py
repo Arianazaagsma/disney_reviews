@@ -1,6 +1,7 @@
 from django.urls import path
-from users import views
+from users import views as users_views
 
 urlpatterns = [
-    path('', views.index, name='index')
+    path('', users_views.index, name='index'), 
+    path('api/users/add_user', users_views.add_user)
 ]
