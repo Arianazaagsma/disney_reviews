@@ -3,5 +3,5 @@ from users import views as users_views
 
 urlpatterns = [
     path('', users_views.index, name='users_index'), 
-    path('api/users/add_user', users_views.add_user)
+    path('add_user/', users_views.add_user, name='add_user')
 ]

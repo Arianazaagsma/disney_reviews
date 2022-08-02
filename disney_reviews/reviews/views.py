@@ -48,10 +48,10 @@ def delete_review(request, pk):
     try: 
         review = Reviews.objects.get(pk=pk)
     except Reviews.DoesNotExist:
-        return JsonResponse({'message': 'The tutorial does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        return JsonResponse({'message': 'The review does not exist'}, status=status.HTTP_404_NOT_FOUND)
     
     review.delete()
-    return JsonResponse({'message': 'Tutorial was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+    return JsonResponse({'message': 'The review was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['POST'])
@@ -63,4 +63,21 @@ def add_show_movie(request):
         return JsonResponse(shows_movies_serializer.data,
                             status=status.HTTP_201_CREATED)
     return JsonResponse(shows_movies_serializer.errors,
+                        status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['PUT'])
+def edit_review(request, pk):
+    try: 
+        review = Reviews.objects.get(pk=pk)
+    except Reviews.DoesNotExist:
+        return JsonResponse({'message': 'The review does not exist'}, status=status.HTTP_404_NOT_FOUND)
+    
+    review_data = JSONParser().parse(request)
+    review_serializer = ReviewsSerializers(review, data=review_data)
+    if review_serializer.is_valid():
+        review_serializer.save()
+        return JsonResponse(review_serializer.data,
+                            status=status.HTTP_201_CREATED)
+    return JsonResponse(review_serializer.errors,
                         status=status.HTTP_400_BAD_REQUEST)

@@ -1,5 +1,4 @@
-DROP DATABASE IF EXISTS disney_reviews_db;
-CREATE DATABASE disney_reviews_db;
+CREATE DATABASE IF NOT EXISTS disney_reviews_db;
 
 \c disney_reviews_db
 

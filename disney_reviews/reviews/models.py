@@ -11,8 +11,8 @@ class Shows_Movies(models.Model):
     release_year = models.DateField()
     age_certification = models.CharField(max_length=6)
     runtime = models.IntegerField()
-    genre = models.CharField(max_length=20)
-    seasons = models.IntegerField
+    genre = models.CharField(max_length=280)
+    seasons = models.IntegerField(null=True)
 
 
 class Reviews(models.Model):
