@@ -2,9 +2,10 @@ version: "3.8"
 services:
   web:
     build: ./disney_reviews
+    image: 
     command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./disney_reviews/:/usr/src/disney_reviews/ # does this need to be ./app/:usr/src/app/?
+    volumes: 115951147956.dkr.ecr.us-west-1.amazonaws.com/az_devops_portfolio_project:az_devops_portfolio_project_web
+      - ./disney_reviews/:/usr/src/disney_reviews/
     ports:
       - 8000:8000
     environment:
