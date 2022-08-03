@@ -2,10 +2,10 @@ version: "3.8"
 services:
   web:
     build: ./disney_reviews
-    image: 
+    image: 115951147956.dkr.ecr.us-west-1.amazonaws.com/az_devops_portfolio_project:az_devops_portfolio_project_web
     command: python manage.py runserver 0.0.0.0:8000
-    volumes: 115951147956.dkr.ecr.us-west-1.amazonaws.com/az_devops_portfolio_project:az_devops_portfolio_project_web
-      - ./disney_reviews/:/usr/src/disney_reviews/
+    volumes:
+      - ./disney_reviews/:/usr/src/disney_reviews/ # does this need to be ./app/:usr/src/app/?
     ports:
       - 8000:8000
     environment:
@@ -22,26 +22,26 @@ services:
     image: postgres:13.2-alpine
     restart: always
     environment:
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: admin123
-        POSTGRES_DB: disney_reviews_db
-        POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: disney_reviews_db
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
-        - "5432:5432"
+      - "5432:5432"
     volumes:
-        - ./data:/data
-        - ./data/misc/django_init.sql:/docker-entrypoint-initdb.d/1-django-init.sql
+      - ./data:/data
+      - ./data/misc/django_init.sql:/docker-entrypoint-initdb.d/1-django-init.sql
   pgadmin:
     container_name: pgadmin_container
     image: dpage/pgadmin4:5.2
     restart: always
     environment:
-        PGADMIN_DEFAULT_EMAIL: admin@example.com
-        PGADMIN_DEFAULT_PASSWORD: admin123
-        PGADMIN_LISTEN_PORT: 5433
-        PGADMIN_CONFIG_SERVER_MODE: "False"
-        PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_LISTEN_PORT: 5433
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
     ports:
-        - "5433:5433"
+      - "5433:5433"
     depends_on:
-        - pg
+      - pg
