@@ -17,8 +17,8 @@ services:
       - DATABASE=postgres
       - VIRTUAL_HOST=ec2-13-56-52-160.us-west-1.compute.amazonaws.com
       - VIRTUAL_PORT=8000
-    depends_on:
-      - pg
+    # depends_on:
+    #   - pg
   # pg:
   #   container_name: pg_container
   #   image: postgres:13.2-alpine
