@@ -18,14 +18,14 @@ services:
       - VIRTUAL_HOST=ec2-13-56-52-160.us-west-1.compute.amazonaws.com
       - VIRTUAL_PORT=8000
   nginx:
-  build: ./nginx
-  image: 115951147956.dkr.ecr.us-west-1.amazonaws.com/az_devops_portfolio_project:az_devops_portfolio_project_nginx
-  # volumes:
-  #   - static_volume:/usr/src/app/static
-  ports:
-    - 8000:80
-  depends_on:
-    - web
+    build: ./nginx
+    image: 115951147956.dkr.ecr.us-west-1.amazonaws.com/az_devops_portfolio_project:az_devops_portfolio_project_nginx
+    # volumes:
+    #   - static_volume:/usr/src/app/static
+    ports:
+      - 8000:80
+    depends_on:
+      - web
     
     # depends_on:
     #   - pg
