@@ -6,8 +6,8 @@ services:
     command: gunicorn disney_reviews.wsgi:application --bind 0.0.0.0:8000 # python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./disney_reviews/:/usr/src/disney_reviews/ # does this need to be ./app/:usr/src/app/?
-    ports:
-      - 8000:8000
+    expose:
+      - 8000
     environment:
       - DB_NAME=disney_reviews_db
       - DB_USER=postgres
